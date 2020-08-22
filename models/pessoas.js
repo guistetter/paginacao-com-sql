@@ -2,8 +2,8 @@
 const findAll = ( connection, params ) => {
 
   return new Promise((resolve, reject) => {
-    const offset =  params.currentPage * params.pageSize
-    const pageSize = params.pageSize
+    const offset =  parseInt(params.currentPage * params.pageSize)
+    const pageSize = parseInt(params.pageSize)
     //necessario saber o total de registros para fazer calculo e saber o total de paginas, assim podemos criar o menu no frontend para trocar as paginas
     connection.query('select count(*) as total from pessoas', (err, result)=> {
      const total = result[0].total
@@ -20,7 +20,7 @@ const findAll = ( connection, params ) => {
               pagination: {
                 pages: totalPages,
                 pageSize,
-                currentPage: params.currentPage
+                currentPage: parseInt(params.currentPage)
               }
             })
           }
