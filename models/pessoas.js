@@ -1,8 +1,10 @@
-const findAll = ( connection ) => {
+//params é para a paginacao, precisamos trabalhar o model e controller
+const findAll = ( connection, params ) => {
 
   return new Promise((resolve, reject) => {
-
-    connection.query("select * from pessoas", (err, results) => {
+    const offset =  params.currentPage * params.pageSize
+    const pageSize = params.pageSize
+    connection.query( `select * from pessoas limit ${offset}, ${pageSize}`, (err, results) => {
       if(err){
         reject(err)
       }else{
