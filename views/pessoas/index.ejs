@@ -30,8 +30,9 @@
     <li class="page-item <%if(i==results.pagination.currentPage){%> active<% } %>"><a class="page-link" href="/pessoas?page=<%= i %>"> <%= (i + 1) %></a></li>
     <% } %>
 
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-
+    <% if(results.pagination.currentPage < results.pagination.pages -1){ %>
+    <li class="page-item"><a class="page-link" href="/pessoas?page=<%= (results.pagination.currentPage + 1) %>">Proximo</a></li>
+    <% } %>
 
   </ul>
 </nav>
