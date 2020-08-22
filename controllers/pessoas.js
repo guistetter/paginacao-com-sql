@@ -7,7 +7,7 @@ const index = async (connection, req, res) => {
     currentPage: req.query.page || 0
   }
   const results = await pessoas.findAll(connection, params)
-  res.render('pessoas/index', {pessoas: results})
+  res.render('pessoas/index', {results})
 }
 
 const deleteOne = async(connection, req, res) => {
@@ -29,7 +29,7 @@ const createProcess = async(connection, req, res) => {
 
 const updateForm = async(connection, req, res) => {
   const pessoa = await pessoas.findById(connection, req.params.id)
-  res.render("pessoas/update", {pessoa})
+  res.render("pessoas/update", {results})
 }
 
 const updateProcess = async(connection, req, res) => {
